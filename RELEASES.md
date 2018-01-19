@@ -1,7 +1,7 @@
 <link href="../site.css" rel="stylesheet"></link>
 [Readme](README.md) [Releases](RELEASES.md)
 
-## 0.1.2-SNAPSHOT/20180119-21:31:57
+## 0.1.2/20180119-21:33:04
 
 - dev.branch + release creats snapshot
 
