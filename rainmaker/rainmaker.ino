@@ -109,7 +109,7 @@ BME280I2C bme;    // Default : forced mode, standby time = 1000 ms
 #endif
 
 
-const char* relase= "$Release:0.1.4-SNAPSHOT$";
+const char* relase= "$Release:0.1.4$";
 
 // Measurement
 struct Ambient {
