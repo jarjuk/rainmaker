@@ -1,0 +1,8 @@
+2018-01-01  jj  <jj@horsti>
+
+	* README.org: Added functional description
+
+2017-12-26  jj  <jj@horsti>
+
+	* sadetin/sadetin.ino (): support config
+

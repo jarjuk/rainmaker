@@ -1,0 +1,242 @@
+* =rainmaker= - Trigger (rain) output for warm and dry ambient state
+
+[[https://store.arduino.cc/arduino-uno-rev3][Arduino UNO]] based controller using [[https://www.bosch-sensortec.com/bst/products/all_products/bme280][BME280]] environmental sensor to
+output a relay signal for warm and dry ambient state.
+
+* Features
+
+ - Initialization
+   - [X] Read configuration parameters from EEPROM
+   - [X] Print configuration parameters to serial
+ - Normal operation
+   - [X] Read and show temperature and humidity
+   - [X] Rain operation active
+   - [X] Blank display after idle timeout
+ - Configuration operation
+   - [X] Rain operation inactive
+   - Configuration values
+     - [X] Configure temperature threshold (TH)
+     - [X] Configure humidity threshold (RH)
+     - [X] Configure blank LCK idel timeout (IDLE)
+     - [X] Configure rain delay (DEL)
+     - [X] Configure rain duration (DUR)
+     - [X] Change rain delay timer for debug purposes (TMR)
+   - Configuration functions
+     - [X] Menu choice to show configuration value
+     - [X] Menu choice to choose configuration value
+     - [X] Menu choice to change configuration value
+     - [X] Menu choice to persist changes in EEPROM
+ - Rain operation
+   - [X] Rain if temp exceed limit and RH less than limit
+   - [X] Time interval between rainy periods  (DEL)
+   - [X] Rain lasts for a duration (DUR)
+   - [ ] Output signal (RAIN) when should rain
+ - Keyboard
+   - [X] Debounce timeout
+   - [X] Two key operation (select and set)
+
+
+* Functional Description
+
+** State Model
+
+#+BEGIN_SRC plantuml :noweb yes :file pics/func.svg :eval no-export :exports results
+
+  state "Main: stat machine" as Main {
+     [*] --> MainStarting
+     MainStarting --> MainOperating
+
+     state  MainOperating {
+
+        state "Display: state machine" as Display {
+          [*] --> DisplayMain
+	  DisplayMain --> DisplayIdle : timeout
+	  DisplayIdle --> DisplayMain : select, set
+	  DisplayMain -up-> Configuring : select
+	  Configuring -up-> ConfigureSet : set
+	  ConfigureSet --> ConfigureSet : select
+	  ConfigureSet --> Configuring : set
+	  Configuring --> Configuring : select
+	  Configuring -> ConfigurePersist : select
+	  ConfigurePersist -down-> DisplayMain : select, set
+          state "OperatingMode: mode" as OperatingMode {
+
+	     state "Rain: state machine" as Rain {
+	       state NoRain
+	       state WaitToRain
+	       state Raining
+	       ' [*] -> NoRain
+	       NoRain --> WaitToRain : t>TH && rh<RH
+	       WaitToRain --> Raining : RAIN_DELAY
+	       Raining --> WaitToRain : RAIN_DURATION
+	       Raining --> NoRain : t<TH || rh>RH
+	       WaitToRain --> NoRain : t<TH || rh>RH
+	     }
+	     state DisplayMain {
+
+		state "IdleChecker: state machine" as IdleChecker {
+		}
+		state "UpdateMeasurement: state machine" as UpdateMeasurement {
+		}
+
+	     }
+	     state DisplayIdle {
+
+		state "IdleMeasurement: state machine" as IdleMeasurement {
+		}
+
+	     }
+        } 
+        state "ConfiguringMode: mode" as ConfiguringMode {
+	  state Configuring {
+          }
+	  state ConfigureSet {
+          }
+	  state ConfigurePersist {
+          }
+        }
+        }
+        --
+        state "SelectButton: state machine" as SelectButton {
+        }
+        --
+        state "SetButton: state machine" as  SetButton { 
+        }
+     }
+  }
+#+END_SRC
+
+#+RESULTS:
+[[file:pics/func.svg]]
+
+
+** State Model Behavior
+
+At a high level, =rainmaker= is a state machine =Main= with two states
+=MainStarting= and =MainOperating=.
+
+=MainStarting= transitions to =MainOperating= after reading parameters
+from EEPROM, and configuring controller pins and peripherals.
+
+=MainOperating= runs three state machines in parallel:
+ 1) =SelectButton= to check pressing of =select= button,
+ 2) =SetButton= to check pressing of =set= button, and
+ 3) =Display= to read inputs from sensor and buttons, and to control
+    output to LCD and to output pins.
+
+State machine =Display= implements modes =ConfiguringMode= and
+=OperatingMode=.
+
+=OperatingMode= -mode includes states =DisplayMain= and =DisplayIdle=.
+Both of these states read environment sensor and execute state machine
+=Rain=. =DisplayMain= reads and updates ambient state to LCD display
+using state machine =UpdateMeasurement=. The corresponding state
+machine, =IdleMeasurement=, in =DisplayMain= reads ambient state and
+blanks LCD.  =DisplayMain= runs state machine =IdleChecker= to trigger
+=timeout= transition from =DisplayMain= to =DisplayIdle=.  Pressing
+either =select= or =set= -button, when in =DisplayIdle=, resumes
+control back to =DisplayMain= state.
+
+
+States of state machine =Rain= use ambient state and two timers:
+
+1) state =NoRain=: Entered, when ambient temperature is below
+   parameter =TH= limit OR relative humidity greater than parameter
+   =RH= limit. 
+2) state =WaitToRain= : Entered, when temperature above parameter =TH=
+   limit and relative humidity less than parameter =RH= limit and
+   RAIN_DELAY timer has not elapsed. Output signal =RAIN= is =off=.
+3) state =Raining=: Entered, when temperature above parameter =TH=
+   limit and relative humidity less than parameter =RH= limit and
+   =RAIN_DELAY= timer has elapsed and =RAIN_DURATION= has not
+   elapsed. Output signal =RAIN= is =on=.
+
+=Configuration= -mode is invoked by pressing =select= button in
+=DisplayMain= -state. In =Configuring= state button =select= chooses
+next parameter to configure. =set= button transitions to state
+=ConcigureSet=, which allows choosing parameter value with =select=
+button and resuming back to =Configuring= state with =set=
+button. After all configuration parameters have been processed,
+pressing =select= transitions to =ConfigurePersist=, where =set=
+button persists parameter values to EEPROM and resumes back to
+=DisplayMain=. Button =select= resumes back to =DisplayMain= without
+making changes permanent.
+ 
+
+* Config
+
+#+BEGIN_SRC sh :eval no-export :results output :exports results
+cat rainmaker/rainmaker.ino | sed -n -e '/^ConfigSlot /,/\};/p'
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+ConfigSlot slots[CONFIG_SLOTS] = {
+  {
+    "TH"                // warm temperature threshold
+    ,&temp_too_treshold
+    ,5                  // increment by 5 degrees
+    ,50                 // max 50 deg
+    ,20                 // min 20 deg
+    ,1                  // save to eeprom 0 address
+  },
+  {
+    "RH"                // dry/humid threshold
+    ,&relative_humidity_treshold
+    ,5                  // increment
+    ,100                // max
+    ,30                 // min
+    ,2                  // save to EEPROM address slot
+  },
+  {
+    "IDLE"              // Timeout before blanking LCD
+    ,&idle_timeout      // idle timeout (seconds)
+    ,30                 // increment
+    ,600                // max 10 min
+    ,30                 // min
+    ,3                  // save to EEPROM address slot
+  },
+  {
+    "DEL"               // Rain delay, number of ticks between showers
+    ,&rain_delay        // delay * 15 mins between rain showever
+    ,1                  // increment by slot count
+    ,RAIN_DELAY_MAX     // max 8*15 mins = 2 hours
+    ,1                  // min 1 slot = 15 mins
+    ,4                  // save to EEPROM address slot
+  },
+  {
+    "DUR"               // Rain duration = length of shower
+    ,&rain_duration     // delay * 15 mins between rain showever
+    ,10                 // increment 10 sec slots
+    ,120                // max 120 secs = 2 minutes
+    ,10                 // min 10 secs
+    ,5                  // save to EEPROM address slot
+  },
+  {
+    "TMR"               // Current counter value, allow change but NOT persist
+    ,&rainTimer         // delay * 15 mins between rain showever
+    ,RAIN_DELAY_TICK    // increment counter by tick size
+    ,RAIN_DELAY_TICK * RAIN_DELAY_MAX 
+                        // max to rain delay = number of ticks between showers
+    ,0                  // min = start counter from 0
+    ,0                  // NOT saved to EEPROM
+  }  
+};
+#+end_example
+
+
+* Development
+
+** Directories
+
+
+* Fin								   :noexport:
+
+
+** Emacs variables
+
+# Local Variables:
+# org-confirm-babel-evaluate: nil
+# End:
+
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="170px" preserveAspectRatio="none" style="width:493px;height:170px;" version="1.1" viewBox="0 0 493 170" width="493px" zoomAndPan="magnify"><defs><filter height="300%" id="f3bxp70gv62fy" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><ellipse cx="54.25" cy="18.322" fill="#000000" filter="url(#f3bxp70gv62fy)" rx="10" ry="10" style="stroke: none; stroke-width: 1.0;"/><rect fill="#FEFECE" filter="url(#f3bxp70gv62fy)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="97" x="6" y="106.3215"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="6" x2="103" y1="132.6184" y2="132.6184"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="77" x="16" y="124.3166">NotPushed</text><rect fill="#FEFECE" filter="url(#f3bxp70gv62fy)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="73" x="227" y="106.3215"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="227" x2="300" y1="132.6184" y2="132.6184"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="53" x="237" y="124.3166">Pushed</text><rect fill="#FEFECE" filter="url(#f3bxp70gv62fy)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="107" x="374" y="106.3215"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="481" y1="132.6184" y2="132.6184"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="87" x="384" y="124.3166">LongPushed</text><!--link *start to NotPushed--><path d="M54.25,28.405 C54.25,44.067 54.25,76.7953 54.25,100.9581 " fill="none" id="*start-NotPushed" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="54.25,105.975,58.25,96.975,54.25,100.975,50.25,96.975,54.25,105.975" style="stroke: #A80036; stroke-width: 1.0;"/><!--link NotPushed to Pushed--><path d="M102.7241,131.3215 C138.666,131.3215 187.161,131.3215 221.414,131.3215 " fill="none" id="NotPushed-Pushed" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="226.785,131.3215,217.785,127.3215,221.785,131.3215,217.785,135.3215,226.785,131.3215" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="86" x="121" y="123.3884">Leading edge</text><!--link Pushed to NotPushed--><path d="M226.843,146.9373 C220.188,149.1715 213.222,151.1178 206.5,152.3216 C169.751,158.9028 159.418,157.8729 122.5,152.3216 C117.627,151.5888 112.622,150.5773 107.643,149.3913 " fill="none" id="Pushed-NotPushed" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="102.6785,148.1509,110.4395,154.2145,107.5292,149.3637,112.38,146.4534,102.6785,148.1509" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="81" x="123.5" y="147.3884">Trailing edge</text><!--link Pushed to LongPushed--><path d="M299.647,131.3215 C319.913,131.3215 345.628,131.3215 368.655,131.3215 " fill="none" id="Pushed-LongPushed" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="373.83,131.3215,364.83,127.3215,368.83,131.3215,364.83,135.3215,373.83,131.3215" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="36" x="318" y="123.3884">Timer</text><!--link LongPushed to NotPushed--><path d="M381.818,106.1597 C353.538,91.9605 315.88,75.635 280.25,68.3215 C243.679,60.8151 232.773,60.5834 196.25,68.3215 C163.577,75.2442 129.286,90.2113 102.588,103.8202 " fill="none" id="LongPushed-NotPushed" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="98.0325,106.1667,107.8651,105.6015,102.4775,103.8771,104.2018,98.4895,98.0325,106.1667" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="81" x="197.25" y="71.3884">Trailing edge</text><!--
+@startuml
+
+  [*] - -> NotPushed
+
+  NotPushed -> Pushed  : Leading edge
+  Pushed -> LongPushed : Timer
+
+  Pushed -> NotPushed : Trailing edge
+  LongPushed -> NotPushed : Trailing edge
+
+
+
+@enduml
+
+PlantUML version 1.2017.16(Sun Sep 03 13:53:37 EEST 2017)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 1.8.0_151-b12
+Operating System: Linux
+OS Version: 3.13.0-135-generic
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

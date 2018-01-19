@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="239px" preserveAspectRatio="none" style="width:246px;height:239px;" version="1.1" viewBox="0 0 246 239" width="246px" zoomAndPan="magnify"><defs><filter height="300%" id="fpzsyk90lkbm9" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--class measurement--><rect fill="#FEFECE" filter="url(#fpzsyk90lkbm9)" height="73.6094" id="measurement" style="stroke: #A80036; stroke-width: 1.5;" width="119" x="6" y="8"/><ellipse cx="21" cy="24" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M23.9688,29.6406 Q23.3906,29.9375 22.75,30.0859 Q22.1094,30.2344 21.4063,30.2344 Q18.9063,30.2344 17.5859,28.5859 Q16.2656,26.9375 16.2656,23.8125 Q16.2656,20.6875 17.5859,19.0313 Q18.9063,17.375 21.4063,17.375 Q22.1094,17.375 22.7578,17.5313 Q23.4063,17.6875 23.9688,17.9844 L23.9688,20.7031 Q23.3438,20.125 22.75,19.8516 Q22.1563,19.5781 21.5313,19.5781 Q20.1875,19.5781 19.5,20.6484 Q18.8125,21.7188 18.8125,23.8125 Q18.8125,25.9063 19.5,26.9766 Q20.1875,28.0469 21.5313,28.0469 Q22.1563,28.0469 22.75,27.7734 Q23.3438,27.5 23.9688,26.9219 L23.9688,29.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="87" x="35" y="28.1543">measurement</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="124" y1="40" y2="40"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="29" x="12" y="54.2104">temp</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="48" x="12" y="67.0151">humidity</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="124" y1="73.6094" y2="73.6094"/><!--class mode--><rect fill="#FEFECE" filter="url(#fpzsyk90lkbm9)" height="73.6094" id="mode" style="stroke: #A80036; stroke-width: 1.5;" width="75" x="160" y="8"/><ellipse cx="178.6" cy="24" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M181.5688,29.6406 Q180.9906,29.9375 180.35,30.0859 Q179.7094,30.2344 179.0063,30.2344 Q176.5063,30.2344 175.1859,28.5859 Q173.8656,26.9375 173.8656,23.8125 Q173.8656,20.6875 175.1859,19.0313 Q176.5063,17.375 179.0063,17.375 Q179.7094,17.375 180.3578,17.5313 Q181.0063,17.6875 181.5688,17.9844 L181.5688,20.7031 Q180.9438,20.125 180.35,19.8516 Q179.7563,19.5781 179.1313,19.5781 Q177.7875,19.5781 177.1,20.6484 Q176.4125,21.7188 176.4125,23.8125 Q176.4125,25.9063 177.1,26.9766 Q177.7875,28.0469 179.1313,28.0469 Q179.7563,28.0469 180.35,27.7734 Q180.9438,27.5 181.5688,26.9219 L181.5688,29.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="35" x="193.4" y="28.1543">mode</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="161" x2="234" y1="40" y2="40"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="43" x="166" y="54.2104">running</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="63" x="166" y="67.0151">configuring</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="161" x2="234" y1="73.6094" y2="73.6094"/><!--class parameter--><rect fill="#FEFECE" filter="url(#fpzsyk90lkbm9)" height="86.4141" id="parameter" style="stroke: #A80036; stroke-width: 1.5;" width="98" x="16.75" y="142"/><ellipse cx="31.75" cy="158" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M34.7188,163.6406 Q34.1406,163.9375 33.5,164.0859 Q32.8594,164.2344 32.1563,164.2344 Q29.6563,164.2344 28.3359,162.5859 Q27.0156,160.9375 27.0156,157.8125 Q27.0156,154.6875 28.3359,153.0313 Q29.6563,151.375 32.1563,151.375 Q32.8594,151.375 33.5078,151.5313 Q34.1563,151.6875 34.7188,151.9844 L34.7188,154.7031 Q34.0938,154.125 33.5,153.8516 Q32.9063,153.5781 32.2813,153.5781 Q30.9375,153.5781 30.25,154.6484 Q29.5625,155.7188 29.5625,157.8125 Q29.5625,159.9063 30.25,160.9766 Q30.9375,162.0469 32.2813,162.0469 Q32.9063,162.0469 33.5,161.7734 Q34.0938,161.5 34.7188,160.9219 L34.7188,163.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="66" x="45.75" y="162.1543">parameter</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="17.75" x2="113.75" y1="174" y2="174"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="66" x="22.75" y="188.2104">char* NAME</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="38" x="22.75" y="201.0151">value[]</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="72" x="22.75" y="213.8198">currentValue</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="17.75" x2="113.75" y1="220.4141" y2="220.4141"/><!--link measurement to mode--><!--link measurement to parameter--><!--
+@startuml
+
+  class measurement { 
+      temp
+      humidity
+  }
+
+  class mode {
+       running
+       configuring
+  }
+
+  class parameter {
+      char* NAME
+      value[]
+      currentValue
+  }
+
+
+@enduml
+
+PlantUML version 1.2017.16(Sun Sep 03 13:53:37 EEST 2017)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 1.8.0_151-b12
+Operating System: Linux
+OS Version: 3.13.0-135-generic
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
