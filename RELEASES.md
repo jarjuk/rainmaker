@@ -1,7 +1,7 @@
 <link href="../site.css" rel="stylesheet"></link>
 [Readme](README.md) [Releases](RELEASES.md)
 
-## 0.1.1-SNAPSHOT/20180119-12:40:39
+## 0.1.1/20180119-21:28:29
 
 - Version number
 - AM2320
