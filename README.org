@@ -232,6 +232,31 @@ ConfigSlot slots[CONFIG_SLOTS] = {
 #+end_example
 
 
+* Hardware Configs
+
+#+BEGIN_SRC sh :eval no-export :results output :exports results
+cat rainmaker/rainmaker.ino | sed -n -e '/Hardware settings:/,/Hardware settings\./p'
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+// Hardware settings:
+// Lcd-shield pins
+const int lcd_pin1=8;
+const int lcd_pin2=9;
+const int lcd_pin3=4;
+const int lcd_pin4=5;
+const int lcd_pin5=6;
+const int lcd_pin6=7;
+
+// Analog inputs
+const int lcd_button_port=0;
+const int lcd_backligh_port=10;
+
+// Hardware settings.
+#+end_example
+
+
 * Development
 
 ** Release
