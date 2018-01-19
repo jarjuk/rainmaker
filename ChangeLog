@@ -1,3 +1,10 @@
+2018-01-19  jj  <jj@horsti>
+
+	* rainmaker/rainmaker.ino (activateDisplay): control backlight
+	with 'lcd_backligh_port'
+
+	* README.org: hardware
+
 2018-01-01  jj  <jj@horsti>
 
 	* README.org: Added functional description

@@ -48,6 +48,8 @@ const int lcd_pin4=4;
 const int lcd_pin5=3;
 const int lcd_pin6=2;
 #endif
+
+// Hardware settings:
 // Lcd-shield pins
 const int lcd_pin1=8;
 const int lcd_pin2=9;
@@ -56,8 +58,16 @@ const int lcd_pin4=5;
 const int lcd_pin5=6;
 const int lcd_pin6=7;
 
-// define some values used by the panel and buttons
+// Analog inputs
 const int lcd_button_port=0;
+const int lcd_backligh_port=10;
+
+// Hardware settings.
+
+#define BACKLIGHT_BLANK 0
+#define BACKLIGHT_NORMAL 250
+
+
 #define btnRIGHT  0
 #define btnUP     1
 #define btnDOWN   2
@@ -99,7 +109,7 @@ BME280I2C bme;    // Default : forced mode, standby time = 1000 ms
 #endif
 
 
-const char* relase= "$Release:0.1.3$";
+const char* relase= "$Release:0.1.4$";
 
 // Measurement
 struct Ambient {
@@ -629,9 +639,11 @@ void activateDisplay( boolean active ) {
     displayReset();
     displayBME( &ambient );
     displayState(true);
+    analogWrite( lcd_backligh_port, BACKLIGHT_NORMAL);
   } else {
     // clean display
     displayReset();
+    analogWrite( lcd_backligh_port, BACKLIGHT_BLANK);
   }
 }
 
@@ -813,6 +825,7 @@ long EEPROMReadlong(long address)
 void setup() {
   Serial.begin(115200);
   Serial.println("Starting " + String(relase) );
+  Serial.println("lcd_backligh_port " + String(lcd_backligh_port) );
   
   // call sensor.begin() to initialize the library
   sensor.begin();

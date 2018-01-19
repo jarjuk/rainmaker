@@ -3,11 +3,18 @@
 [[https://store.arduino.cc/arduino-uno-rev3][Arduino UNO]] based controller using [[https://www.bosch-sensortec.com/bst/products/all_products/bme280][BME280]] environmental sensor to
 output a relay signal for warm and dry ambient state.
 
+
 * Features
 
  - Initialization
    - [X] Read configuration parameters from EEPROM
    - [X] Print configuration parameters to serial
+   - [X] LCD output rainmaker + version number
+ - Hardware
+   - [X] Temperature and humidity sensor AM2320
+   - [X] 2x16 LCD display shield
+     - [X] select button =NEXT=
+     - [X] left button =SELECT=
  - Normal operation
    - [X] Read and show temperature and humidity
    - [X] Rain operation active
@@ -30,7 +37,7 @@ output a relay signal for warm and dry ambient state.
    - [X] Rain if temp exceed limit and RH less than limit
    - [X] Time interval between rainy periods  (DEL)
    - [X] Rain lasts for a duration (DUR)
-   - [ ] Output signal (RAIN) when should rain
+   - [X] Output signal (RAIN) when should rain
  - Keyboard
    - [X] Debounce timeout
    - [X] Two key operation (select and set)
@@ -197,7 +204,7 @@ ConfigSlot slots[CONFIG_SLOTS] = {
     ,3                  // save to EEPROM address slot
   },
   {
-    "DEL"               // Rain delay, number of ticks between showers
+    "DLY"               // Rain delay, number of ticks between showers
     ,&rain_delay        // delay * 15 mins between rain showever
     ,1                  // increment by slot count
     ,RAIN_DELAY_MAX     // max 8*15 mins = 2 hours
@@ -225,9 +232,41 @@ ConfigSlot slots[CONFIG_SLOTS] = {
 #+end_example
 
 
+* Hardware Configs
+
+#+BEGIN_SRC sh :eval no-export :results output :exports results
+cat rainmaker/rainmaker.ino | sed -n -e '/Hardware settings:/,/Hardware settings\./p'
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+// Hardware settings:
+// Lcd-shield pins
+const int lcd_pin1=8;
+const int lcd_pin2=9;
+const int lcd_pin3=4;
+const int lcd_pin4=5;
+const int lcd_pin5=6;
+const int lcd_pin6=7;
+
+// Analog inputs
+const int lcd_button_port=0;
+const int lcd_backligh_port=10;
+
+// Hardware settings.
+#+end_example
+
+
 * Development
 
-** Directories
+** Release
+
+- checkin into git =dev= -branch
+- run =./release.sh=   
+- switch to =master=
+- merge =dev= tag
+- switch back to =dev=
+
 
 
 * Fin								   :noexport:
