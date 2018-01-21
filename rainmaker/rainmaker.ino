@@ -51,16 +51,21 @@ const int lcd_pin6=2;
 
 // Hardware settings:
 // Lcd-shield pins
-const int lcd_pin1=8;
-const int lcd_pin2=9;
 const int lcd_pin3=4;
 const int lcd_pin4=5;
 const int lcd_pin5=6;
 const int lcd_pin6=7;
+const int lcd_pin1=8;
+const int lcd_pin2=9;
+const int lcd_backligh_port=10;
+
+// rain 
+#define PIN_RAIN_RELAY 3                    // pin controlling relay
+#define RAIN_ON LOW                         // Drive relay on
+#define RAIN_OFF HIGH                       // Drive relay off
 
 // Analog inputs
 const int lcd_button_port=0;
-const int lcd_backligh_port=10;
 
 // Hardware settings.
 
@@ -294,6 +299,8 @@ State WaitToRain() {
 	// start counting for rain duration
 	Serial.println("WaitToRain->Raining rainTime=" + String(rainTimer) );
 	rainTimer = 0;
+	// Start rain
+	controlRainRelay( RAIN_ON );
 	SMRain.Set(Raining);
       } else {
 	SMRain.Set(WaitToRain);
@@ -318,6 +325,8 @@ State Raining() {
 	// start counting for rain delay
 	rainTimer = 0;
 	Serial.println("Raining->WaitToRain rainTimer=" + String(rainTimer) );	
+	// Stop rain
+	controlRainRelay( RAIN_OFF );
 	SMRain.Set(WaitToRain);
       } else {
 	SMRain.Set(Raining);
@@ -327,6 +336,8 @@ State Raining() {
     }
     else {
       Serial.println("Raining->NoRain rainTimer=" + String(rainTimer) );	
+      // Stop rain
+      controlRainRelay( RAIN_OFF );
       SMRain.Set(NoRain);
     }
   }
@@ -632,6 +643,12 @@ State MainOperating() {
 // ------------------------------------------------------------------
 // Helpers
 
+// Start or stop rain
+void controlRainRelay( int level ) {
+  Serial.println("controlRainRelay " + String(level) );
+  digitalWrite(PIN_RAIN_RELAY, level );
+}
+
 // Change display mode
 void activateDisplay( boolean active ) {
   if ( active ) {
@@ -835,6 +852,9 @@ void setup() {
   displayText( "rainmaker", relase );
   delay( 2000);
 
+  // INit rain
+  pinMode(PIN_RAIN_RELAY, OUTPUT);          // sets the digital pin 13 as output
+  controlRainRelay( RAIN_OFF );
 
   // // initialize the LED pin as an output:
   // pinMode(ledPin, OUTPUT);
