@@ -257,23 +257,6 @@ const int lcd_backligh_port=10;
 #+end_example
 
 
-* Development
-
-** Release
-
-- checkin into git =dev= -branch
-- run =./release.sh=   
-- switch to =master=
-- merge =dev= tag
-- switch back to =dev=
-
-
-
-* Fin								   :noexport:
-
-
-** Emacs variables
-
 # Local Variables:
 # org-confirm-babel-evaluate: nil
 # End:

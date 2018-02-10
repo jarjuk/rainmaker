@@ -36,3 +36,14 @@ READREAplugins:
 and open browser to [[http://localhost:4001/rainmaker]]
 
 
+
+
+* Release
+
+- checkin into git =dev= -branch
+- run =./release.sh=   
+- switch to =master=
+- merge =dev= tag
+- switch back to =dev=
+
+
