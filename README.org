@@ -35,7 +35,7 @@ output a relay signal for warm and dry ambient state.
      - [X] Menu choice to persist changes in EEPROM
  - Rain operation
    - [X] Rain if temp exceed limit and RH less than limit
-   - [X] Time interval between rainy periods  (DEL)
+   - [X] Time interval between rainy periods  (DLY)
    - [X] Rain lasts for a duration (DUR)
    - [X] Output signal (RAIN) when should rain
  - Keyboard

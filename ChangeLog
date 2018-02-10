@@ -1,3 +1,7 @@
+2018-01-21  jj  <jj@horsti>
+
+	* rainmaker/rainmaker.ino (controlRainRelay): added method
+
 2018-01-19  jj  <jj@horsti>
 
 	* rainmaker/rainmaker.ino (activateDisplay): control backlight

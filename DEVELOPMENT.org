@@ -1,0 +1,38 @@
+* Configure jekyll 
+
+#+BEGIN_SRC yaml :tangle docs/_config.yml :eval no
+title: rainmaker
+# email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Arduino UNO based controller using BME280 environmental sensor.
+baseurl: "/rainmaker" # the subpath of your site, e.g. /blog
+# url: "" # the base hostname & protocol for your site, e.g. http://example.com
+# twitter_username: jekyllrb
+github_username:  jarjuk
+
+# Build settings
+# markdown: kramdown
+theme: minima
+READREAplugins:
+  - jekyll-feed
+
+
+#+END_SRC
+
+
+* Launch local jekyll site
+
+#+name: launch-jekyll
+#+BEGIN_SRC sh :eval no
+(cd docs; bunde exec jekyll serve)
+#+END_SRC
+
+#+BEGIN_SRC elisp :noweb yes :dir docs :results output :eval no-export :exports none
+(start-process "server" "buf-server" "xterm" "-hold" "-e" "bundle" "exec" "jekyll" "serve" "--port" "4001")
+#+END_SRC
+
+#+RESULTS:
+
+and open browser to [[http://localhost:4001/rainmaker]]
+
+

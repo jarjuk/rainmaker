@@ -1,6 +1,10 @@
 <link href="../site.css" rel="stylesheet"></link>
 [Readme](README.md) [Releases](RELEASES.md)
 
+## 0.1.5-SNAPSHOT/20180119-22:06:44
+
+- control rain relay
+
 ## 0.1.4/20180119-22:06:44
 
 - Blank display after idle timeout: fix
